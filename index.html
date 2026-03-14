@@ -1,12 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Basics Playground (Single File)</title>
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --accent: #10b981;
+      --border: #dbe3f0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 2rem auto;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      color: blue;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    h2 { margin: 0 0 0.35rem; }
+    h3 { margin: 0.8rem 0 0.35rem; }
+
+    p { margin: 0.2rem 0 0.6rem; }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    pre {
+      margin: 0.4rem 0;
+      border-radius: 8px;
+      padding: 0.8rem;
+      overflow: auto;
+      background: #0f172a;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+    }
+
+    code { font-family: Consolas, Monaco, monospace; }
+
+    .html-demo {
+      border: 1px dashed #9ca3af;
+      border-radius: 8px;
+      padding: 0.8rem;
+      margin-top: 0.6rem;
+    }
+
+    .html-demo img {
+      max-width: 180px;
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      margin-top: 0.4rem;
+    }
+
+    /* Flexbox demo */
+    .flex-demo {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      flex: 1 1 120px;
+      min-height: 60px;
+      border-radius: 8px;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+    }
+
+    .box-1 { background: #2563eb; }
+    .box-2 { background: #7c3aed; }
+    .box-3 { background: #0891b2; }
+
+    /* Grid demo */
+    .grid-demo {
+      margin-top: 0.6rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .grid-item {
+      background: #dbeafe;
+      border: 1px solid #93c5fd;
+      border-radius: 8px;
+      min-height: 56px;
+      display: grid;
+      place-items: center;
+      font-weight: 600;
+    }
+
+    button {
+      background: var(--primary);
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      padding: 0.55rem 0.9rem;
+      cursor: pointer;
+      margin-top: 0.35rem;
+    }
+
+    .output {
+      margin-top: 0.6rem;
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    #react-root {
+      margin-top: 0.65rem;
+      padding: 0.8rem;
+      border: 1px dashed #9ca3af;
+      border-radius: 8px;
+      background: #f9fafb;
+    }
+
+    .react-greeting {
+      color: #111827;
+      margin: 0.35rem 0;
+    }
+
+    .badge {
+      background: var(--accent);
+      color: white;
+      font-size: 0.8rem;
+      border-radius: 999px;
+      padding: 0.1rem 0.55rem;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 0.4rem;
+    }
+
+    /* Media Query example */
+    @media (max-width: 600px) {
+      body {
+        background-color: lightgray;
+      }
+
+      .grid-demo {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1 style="text-align: center; 
-  font-weight: bold;">Hello World!</h1>
+  <main class="container">
+    <section class="card">
+      <h1 id="main-heading">Hello World</h1>
+      <p class="muted">Single-file playground for HTML, CSS, JavaScript, and React basics.</p>
+    </section>
+
+    <section class="card">
+      <h2>1) HTML Fundamentals</h2>
+      <p>HTML defines the structure of a webpage.</p>
+
+      <h3>Basic Tags</h3>
+      <pre><code>&lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;img src="cat.jpg" alt="A cute cat"&gt;</code></pre>
+
+      <p><strong>Important idea:</strong> The <code>&lt;body&gt;</code> contains everything visible on the webpage.</p>
+
+      <pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My Page&lt;/h1&gt;
+    &lt;p&gt;Welcome!&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <div class="html-demo">
+        <h3>Live HTML Demo</h3>
+        <p>This is a paragraph.</p>
+        <img
+          src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=500&q=60"
+          alt="A cute cat"
+        />
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) CSS Styling + Responsive Design</h2>
+      <p>CSS controls how things look. Your heading above is blue and centered using:</p>
+      <pre><code>h1 {
+  color: blue;
+  text-align: center;
+}</code></pre>
+
+      <p><strong>Important properties:</strong> <code>color</code> (text color), <code>text-align</code> (alignment).</p>
+
+      <h3>Flexbox (rows and columns)</h3>
+      <div class="flex-demo">
+        <div class="box box-1">Box 1</div>
+        <div class="box box-2">Box 2</div>
+        <div class="box box-3">Box 3</div>
+      </div>
+
+      <h3>Grid (2D layouts)</h3>
+      <div class="grid-demo">
+        <div class="grid-item">A</div>
+        <div class="grid-item">B</div>
+        <div class="grid-item">C</div>
+      </div>
+
+      <h3>Media Query</h3>
+      <pre><code>@media (max-width: 600px) {
+  body {
+    background-color: lightgray;
+  }
+}</code></pre>
+      <p class="muted">Resize your browser below 600px width to see the background and grid change.</p>
+    </section>
+
+    <section class="card">
+      <h2>3) JavaScript Essentials</h2>
+      <p>JavaScript makes websites interactive.</p>
+
+      <h3>Variables</h3>
+      <pre><code>var x = 10
+let y = 20
+const z = 30</code></pre>
+      <p class="muted"><code>var</code> = old way, <code>let</code> = changeable, <code>const</code> = cannot be reassigned.</p>
+
+      <h3>DOM Manipulation</h3>
+      <pre><code>document.querySelector("h1")
+document.querySelector("h1").textContent = "Hello World"</code></pre>
+      <button id="changeTextBtn">Change H1 Text with JS</button>
+
+      <h3>Functions + ES6 + Higher-Order Function</h3>
+      <pre><code>function cube(x){
+  return x * x * x
+}
+
+const cubeArrow = (x) =&gt; x * x * x
+
+let name = "Louie"
+console.log(`Hello ${name}`)
+
+function calculate(x, func){
+  return func(x)
+}</code></pre>
+      <button id="runJsExamplesBtn">Run JS Examples</button>
+      <div class="output" id="jsOutput">Click the button to run examples.</div>
+    </section>
+
+    <section class="card">
+      <h2>4) React Basics <span class="badge">CDN + JSX</span></h2>
+      <p>React is a JavaScript library for building user interfaces.</p>
+      <pre><code>function App(){
+  return &lt;h1&gt;Hello React&lt;/h1&gt;
+}
+
+function Greeting(){
+  return &lt;p&gt;Hello!&lt;/p&gt;
+}</code></pre>
+      <div id="react-root">Loading React demo...</div>
+    </section>
+  </main>
+
+  <script>
+    // JavaScript variables
+    var x = 10;
+    let y = 20;
+    const z = 30;
+
+    // DOM manipulation example
+    const heading = document.querySelector('#main-heading');
+    document.querySelector('#changeTextBtn').addEventListener('click', function () {
+      heading.textContent = 'Hello World (Updated by JavaScript)';
+    });
+
+    // Functions and ES6 examples
+    function cube(value) {
+      return value * value * value;
+    }
+
+    const cubeArrow = (value) => value * value * value;
+
+    function calculate(value, func) {
+      return func(value);
+    }
+
+    document.querySelector('#runJsExamplesBtn').addEventListener('click', function () {
+      let name = 'Louie';
+      const result = [
+        `var x = ${x}, let y = ${y}, const z = ${z}`,
+        `cube(3) = ${cube(3)}`,
+        `cubeArrow(4) = ${cubeArrow(4)}`,
+        `Template literal: Hello ${name}`,
+        `Higher-order function calculate(5, cubeArrow) = ${calculate(5, cubeArrow)}`,
+      ];
+
+      document.querySelector('#jsOutput').textContent = result.join('\n');
+      console.log(`Hello ${name}`);
+    });
+  </script>
+
+  <!-- React via CDN so everything stays in one file -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Greeting() {
+      return <p className="react-greeting">Hello!</p>;
+    }
+
+    function App() {
+      return (
+        <div>
+          <h3>Hello React</h3>
+          <Greeting />
+          <p className="muted">This is JSX rendered by React in the same HTML file.</p>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('react-root'));
+    root.render(<App />);
+  </script>
 </body>
 </html>
